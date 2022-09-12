@@ -1,0 +1,64 @@
+FUNCTION Read_size() : INTEGER
+VAR
+    size : INTEGER
+BEGIN
+
+    REPEAT
+        Read(size);
+    UNTIL (size < 0 OR size > 100)
+    
+    RETURN size ;
+
+END
+
+
+PROCEDURE Read_vectors(size : INTEGER, VAR Vtab : ARRAY_OF FLOAT)
+VAR
+    i : INTEGER
+BEGIN
+
+    FOR i FROM 0 TO size STEP 1  DO
+        Read(Vtab[i]);
+    END_FOR
+
+END
+
+
+PROCEDURE dot_Product(VAR V1, V2 : ARRAY_OF FLOAT)
+VAR
+    i : INTEGER
+    ps : FLOAT := 0
+BEGIN
+
+    FOR i FROM 0 TO V1 - 1 STEP 1  DO
+        ps += V1[i] * V2[i];
+    END_FOR
+
+END
+
+
+ALGORITHM algorithm_name
+VAR
+    Vtab : ARRAY_OF FLOAT[100];
+    i, j, size : INTEGER   
+BEGIN
+
+    //Read size of tab elemts
+    size := Read_size();
+
+    //Read elemts
+    Read_vectors(size, Vtab);
+
+    //Produit scalaire 
+    dot_Product(V1, V2);
+
+    //Verifie si les vecteurs sont orthogonaux
+    FOR i FROM 0 TO size - 1 STEP 1  DO
+        FOR j FROM i + 1 TO size - 1 STEP 1 DO
+            IF (dot_Product(Vtab[i], Vtab[j]) = 0) THEN
+                Write(Vtab[i], " and ", Vtab[j], " are orthogonal.");
+            END_IF
+        END_FOR
+    END_FOR
+
+END
