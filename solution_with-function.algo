@@ -41,7 +41,7 @@ END
 
 ALGORITHM algorithm_name
 VAR
-    Vtab : ARRAY_OF FLOAT[100];
+    Vtab : ARRAY_OF FLOAT[100]; //Vtab = [[2,5,4], [2,5,9], [2,6,7], [1,8,4] .... [n]]
     i, j, size : INTEGER  
     ps : FLOAT 
 BEGIN
